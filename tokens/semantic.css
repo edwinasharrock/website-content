@@ -1,0 +1,58 @@
+/* ============================================================
+   SEMANTIC COLOUR ALIASES
+   Reference these in components, not the raw scale.
+   ============================================================ */
+
+:root {
+  /* Surfaces */
+  --bg-page:        var(--paper-1);
+  --bg-surface:     var(--paper-0);
+  --bg-raised:      var(--white);
+  --bg-sunken:      var(--paper-2);
+  --bg-band:        var(--paper-2);
+  --bg-inverse:     var(--emerald-800);   /* dark sections */
+  --bg-inverse-deep:var(--emerald-900);
+
+  /* Tinted surfaces (lively, used sparingly) */
+  --bg-emerald-soft: var(--emerald-050);
+  --bg-sage-soft:    var(--sage-100);
+  --bg-blossom-soft: var(--blossom-100);
+  --bg-peach-soft:   var(--peach-100);
+
+  /* Text */
+  --text-primary:   var(--ink);
+  --text-secondary: var(--ink-soft);
+  --text-muted:     var(--ink-mute);
+  --text-faint:     var(--ink-faint);
+  --text-on-dark:   var(--paper-0);
+  --text-on-dark-soft: var(--emerald-200);
+  --text-on-accent: var(--white);
+  --text-link:      var(--emerald-600);
+  --text-link-hover:var(--emerald-800);
+
+  /* Brand roles */
+  --brand:          var(--emerald-700);
+  --brand-strong:   var(--emerald-900);
+  --brand-bright:   var(--emerald-500);
+  --accent:         var(--blossom-500);   /* blossom pink */
+  --accent-strong:  var(--blossom-600);
+  --accent-warm:    var(--terracotta);    /* terracotta */
+  --highlight:      var(--ochre);         /* gold buds */
+
+  /* Borders */
+  --border:         var(--sand);
+  --border-strong:  var(--sand-deep);
+  --border-ink:     rgba(28, 27, 23, 0.14);
+  --border-on-dark: rgba(255, 255, 255, 0.16);
+  --ring:           var(--emerald-500);   /* focus ring */
+
+  /* Status (warm-leaning, restrained) */
+  --success:        var(--emerald-500);
+  --success-soft:   var(--emerald-050);
+  --warning:        var(--ochre-deep);
+  --warning-soft:   var(--peach-100);
+  --danger:         var(--terracotta-deep);
+  --danger-soft:    #F6E2D8;
+  --info:           var(--emerald-600);
+  --info-soft:      var(--emerald-050);
+}

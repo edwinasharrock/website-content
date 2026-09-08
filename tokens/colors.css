@@ -1,0 +1,65 @@
+/* ============================================================
+   EDWINA SHARROCK — COLOUR SYSTEM  (modern / fun direction)
+   Brighter and punchier: vivid spring-green, hot blossom pink,
+   sunny yellow, on clean warm-cream grounds. Drawn from the
+   flowering gum but turned up — energetic, optimistic, modern.
+   ============================================================ */
+
+:root {
+  /* --- Grounds — clean and bright, a hint of warmth --- */
+  --paper-0:  #FFFFFF;   /* cards — crisp white for punch */
+  --paper-1:  #FBF8F2;   /* default page ground (warm cream) */
+  --paper-2:  #F3EEE3;   /* sunken / alternating band */
+  --sand:     #EAE1D1;   /* hairline borders, muted fills */
+  --sand-deep:#D9CDB7;   /* stronger border */
+
+  /* --- Ink (warm near-black, not pure black) --- */
+  --ink:      #1F1D17;   /* primary text */
+  --ink-soft: #4E4A3F;   /* secondary text */
+  --ink-mute: #807866;   /* tertiary / captions */
+  --ink-faint:#ADA48F;   /* disabled, watermark */
+
+  /* --- Green — the signature, now vivid spring-green --- */
+  --emerald-900: #0A5C40;  /* deep block / footers (still legible) */
+  --emerald-800: #0E8A5E;  /* vivid colour-block sections */
+  --emerald-700: #12A66B;  /* brand primary */
+  --emerald-600: #16B679;
+  --emerald-500: #2BC78D;
+  --emerald-400: #57D6A6;
+  --emerald-200: #A7E9CF;
+  --emerald-100: #D6F5E8;
+  --emerald-050: #ECFCF4;
+
+  /* --- Sage — soft eucalyptus support (fresh) --- */
+  --sage-700: #4E6B4A;
+  --sage-500: #6B8C63;
+  --sage-400: #8AAB7C;
+  --sage-300: #AEC79B;
+  --sage-100: #E0EBD0;
+
+  /* --- Blossom — hot flowering-gum pink (lead accent) --- */
+  --blossom-700: #D63B66;
+  --blossom-600: #F0517E;
+  --blossom-500: #FF6B95;  /* vivid primary pink */
+  --blossom-400: #FF8DAC;
+  --blossom-300: #FFB3C7;
+  --blossom-100: #FFE2EA;
+
+  /* --- Sunny — new fun yellow accent (gum-bud gold, brightened) --- */
+  --sunny-600: #E9A100;
+  --sunny-500: #FFC02E;
+  --sunny-300: #FFD96B;
+  --sunny-100: #FFF1C9;
+
+  /* --- Warm support — peach, coral, terracotta --- */
+  --peach-300:  #FFD0AE;
+  --peach-100:  #FFE9D6;
+  --terracotta: #F0744A;
+  --terracotta-deep: #C9502B;
+  --ochre:      var(--sunny-500);
+  --ochre-deep: var(--sunny-600);
+
+  /* --- Pure / utility --- */
+  --white: #FFFFFF;
+  --black: #12110D;
+}
