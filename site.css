@@ -153,4 +153,12 @@ section{padding:96px 0}
 .logo-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:flex-start}
 .logo-card{background:var(--paper-0);border:1px solid var(--border);border-radius:var(--radius-md);box-shadow:var(--shadow-xs);padding:8px 14px;display:flex;align-items:center;justify-content:center;height:56px}
 .logo-card img{max-height:38px;max-width:120px;width:auto;height:auto;object-fit:contain;display:block}
+.marquee{overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.marquee-track{display:flex;gap:0;width:max-content;animation:marquee-scroll 34s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes marquee-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee .logo-card{background:transparent;border:0;box-shadow:none;padding:0 28px;height:auto}
+.marquee .logo-card img{max-height:32px;filter:grayscale(1) contrast(1.15) brightness(1.05);opacity:.8;transition:opacity .2s ease,filter .2s ease}
+.marquee .logo-card:hover img{filter:grayscale(0);opacity:1}
+@media (prefers-reduced-motion: reduce){.marquee-track{animation:none}}
 @media (max-width:900px){.hero-grid,.grid-2{grid-template-columns:1fr;gap:36px}.grid-3{grid-template-columns:1fr}h1{font-size:44px}h2{font-size:34px}.form .row{grid-template-columns:1fr}}
