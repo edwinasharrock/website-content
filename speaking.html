@@ -10,7 +10,8 @@
 <header class="nav">
   <div class="wrap">
     <a class="mark" href="index.html"><b>Edwina Sharrock<span>.</span></b><i><em></em><s>OAM</s></i></a>
-    <nav class="navlinks">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="navlinks" id="nav-links">
       <a href="index.html#about">About</a>
       <a href="work-with-me.html">Work with me</a>
       <a class="on" href="speaking.html">Speaking</a>
@@ -18,6 +19,25 @@
     </nav>
   </div>
 </header>
+<script>
+(function(){
+  var toggle = document.getElementById("nav-toggle");
+  var links = document.getElementById("nav-links");
+  if (!toggle || !links) return;
+  toggle.addEventListener("click", function(){
+    var open = links.classList.toggle("open");
+    toggle.classList.toggle("open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  links.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(){
+      links.classList.remove("open");
+      toggle.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    });
+  });
+})();
+</script>
 <main>
 
 <section class="hero">
@@ -91,8 +111,8 @@
       </div>
     </div>
     <div class="quote">
-      <blockquote>[Add an event organiser quote here, what the room took away and how Edwina was to work with.]</blockquote>
-      <footer><b>Organiser name</b>Event, Year</footer>
+      <blockquote>Thank you Edwina for such a wonderful, inspiring and candid session.</blockquote>
+      <footer><b>Harmin</b>Event participant, Cartier</footer>
     </div>
   </div>
 </section>
@@ -104,7 +124,6 @@
       <h2 style="margin-top:20px">Make an enquiry.</h2>
       <p style="margin-top:20px;font-size:18px;max-width:38ch">Leave your details and a line on the date, the audience and what you need the talk to do. I'll be in touch promptly.</p>
       <ul class="list" style="margin-top:32px">
-        <li>Travel from regional New South Wales, Australia-wide</li>
         <li>Speaker kit, bio and photos supplied on request</li>
         <li>Happy to shape a talk to your conference theme</li>
       </ul>
@@ -151,7 +170,7 @@ document.getElementById('speaking-enquiry').addEventListener('submit', function(
       <p style="max-width:32ch;margin:0;font-size:15px;color:var(--paper-2)">Business coach to founders and leaders. Helping people who are already doing well do it with more clarity and less second-guessing.</p>
     </div>
     <nav><a href="work-with-me.html">Work with me</a><a href="index.html#about">About</a><a href="speaking.html">Speaking</a><a href="index.html#contact">Contact</a></nav>
-    <nav><a href="index.html#contact">Board &amp; advisory enquiries</a><a href="https://www.linkedin.com/">LinkedIn</a><a href="mailto:edwinasharrock@gmail.com">edwinasharrock@gmail.com</a></nav>
+    <nav><a href="index.html#contact">Board &amp; advisory enquiries</a><a href="https://www.linkedin.com/in/edwina-sharrock/" target="_blank" rel="noopener">LinkedIn</a><a href="index.html#general-contact">Contact</a></nav>
   </div>
   <div class="wrap"><small>&copy; 2026 Edwina Sharrock OAM</small></div>
 </footer>

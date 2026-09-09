@@ -10,7 +10,8 @@
 <header class="nav">
   <div class="wrap">
     <a class="mark" href="index.html"><b>Edwina Sharrock<span>.</span></b><i><em></em><s>OAM</s></i></a>
-    <nav class="navlinks">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="navlinks" id="nav-links">
       <a href="index.html#about">About</a>
       <a class="on" href="work-with-me.html">Work with me</a>
       <a href="speaking.html">Speaking</a>
@@ -18,6 +19,25 @@
     </nav>
   </div>
 </header>
+<script>
+(function(){
+  var toggle = document.getElementById("nav-toggle");
+  var links = document.getElementById("nav-links");
+  if (!toggle || !links) return;
+  toggle.addEventListener("click", function(){
+    var open = links.classList.toggle("open");
+    toggle.classList.toggle("open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  links.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(){
+      links.classList.remove("open");
+      toggle.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    });
+  });
+})();
+</script>
 <main>
 
 <section class="hero">
@@ -50,7 +70,7 @@
           <div>
             <span class="offer-kicker">Your front door</span>
             <h3>A One-Off Strategy Call</h3>
-            <p><strong>A one-off strategy call. For the woman who isn't ready to commit, or who has one thing she needs untangled right now.</strong></p>
+            <p><strong>A one-off strategy call. For the business owner or leader who isn't ready to commit, or who has one thing they need untangled right now.</strong></p>
             <p>Most of the people I work with long term walk through this door first. One conversation, one problem, and a clear view of what to do about it. No obligation to go any further.</p>
             <div class="cta-row" style="margin-top:26px"><a class="btn btn-primary" href="https://calendly.com/edwinasharrock/book-one-hour-strategy-session-with-edwina-via-zoom" target="_blank" rel="noopener">Book a strategy call today</a></div>
           </div>
@@ -82,7 +102,7 @@
               <blockquote style="font-size:18px">"She has completely changed my relationship with the numbers in my business... By August this year, my business had already generated three times the revenue we made across the entirety of last year."</blockquote>
               <footer><b>Ruby</b>Womankind</footer>
             </div>
-            <div class="cta-row" style="margin-top:26px"><a class="btn btn-primary" href="https://calendly.com/edwinasharrock/coaching-with-edwina-discovery-call" target="_blank" rel="noopener">Apply for coaching</a></div>
+            <div class="cta-row" style="margin-top:26px"><a class="btn btn-primary" href="#apply">Apply for coaching</a></div>
           </div>
           <div class="offer-side offer-reveal">
             <button type="button" class="btn btn-secondary btn-sm offer-reveal-btn">See pricing &amp; details</button>
@@ -151,7 +171,7 @@
       <ul class="list">
         <li>Founders and executives past the start and short of the finish</li>
         <li>Clinical and health leaders commercialising what they know</li>
-        <li>Women stepping into bigger rooms and bigger numbers</li>
+        <li>Leaders stepping into bigger rooms and bigger numbers</li>
         <li>Purpose-led organisations that still have to make money</li>
       </ul>
       <p style="margin-top:26px;font-size:17px">If you want cheerleading, I'm not your person. If you want someone who will tell you the truth and stay to help you act on it, we'll get along.</p>
@@ -245,6 +265,70 @@
   </div>
 </section>
 
+<section id="apply" class="dark">
+  <div class="wrap grid-2" style="align-items:start">
+    <div>
+      <span class="eyebrow on-dark">Ongoing Monthly Coaching</span>
+      <h2 style="margin-top:20px">Apply for coaching.</h2>
+      <p style="margin-top:20px;font-size:18px;max-width:38ch">A few details so I can see where you're at before we jump on a call. Once you hit send, I'll be in touch promptly.</p>
+    </div>
+    <div id="coaching-apply-wrap">
+      <form class="form" id="coaching-apply">
+        <div class="row">
+          <div class="field">
+            <label for="ca-name">Name</label>
+            <input id="ca-name" name="name" type="text" placeholder="Your name" required>
+          </div>
+          <div class="field">
+            <label for="ca-email">Email</label>
+            <input id="ca-email" name="email" type="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="ca-business">Business name</label>
+          <input id="ca-business" name="business" type="text" placeholder="Your business name">
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="ca-website">Website</label>
+            <input id="ca-website" name="website" type="text" placeholder="yourwebsite.com">
+          </div>
+          <div class="field">
+            <label for="ca-social">Social URLs</label>
+            <input id="ca-social" name="social" type="text" placeholder="Instagram, LinkedIn, etc">
+          </div>
+        </div>
+        <div class="field">
+          <label for="ca-goals">Main goals of working together</label>
+          <textarea id="ca-goals" name="goals" rows="3" placeholder="What you want out of this"></textarea>
+        </div>
+        <div class="field">
+          <label for="ca-challenge">Biggest current challenge</label>
+          <textarea id="ca-challenge" name="challenge" rows="3" placeholder="What's getting in the way right now"></textarea>
+        </div>
+        <button type="submit" class="btn btn-light btn-lg">Send my application</button>
+        <p class="form-note">This opens an email to Edwina with your details filled in, so you can check it before it sends.</p>
+      </form>
+      <div id="coaching-apply-done" hidden>
+        <p style="font-size:18px;color:var(--paper-0);max-width:38ch">Thanks, that's landed with me. I'll be in touch promptly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+document.getElementById('coaching-apply').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = this.name.value, email = this.email.value, business = this.business.value,
+      website = this.website.value, social = this.social.value, goals = this.goals.value, challenge = this.challenge.value;
+  var subject = 'Coaching application from ' + name;
+  var body = 'Name: ' + name + '\nEmail: ' + email + '\nBusiness: ' + business + '\nWebsite: ' + website + '\nSocial: ' + social +
+    '\n\nMain goals of working together:\n' + goals + '\n\nBiggest current challenge:\n' + challenge;
+  window.location.href = 'mailto:edwinasharrock@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  document.getElementById('coaching-apply').hidden = true;
+  document.getElementById('coaching-apply-done').hidden = false;
+});
+</script>
+
 <section id="contact" class="dark">
   <div class="wrap">
     <div>
@@ -274,7 +358,7 @@ document.addEventListener('click', function(e){
       <p style="max-width:32ch;margin:0;font-size:15px;color:var(--paper-2)">Business coach to founders and leaders. Helping people who are already doing well do it with more clarity and less second-guessing.</p>
     </div>
     <nav><a href="work-with-me.html">Work with me</a><a href="index.html#about">About</a><a href="speaking.html">Speaking</a><a href="#contact">Contact</a></nav>
-    <nav><a href="index.html#contact">Board &amp; advisory enquiries</a><a href="https://www.linkedin.com/">LinkedIn</a><a href="mailto:edwinasharrock@gmail.com">edwinasharrock@gmail.com</a></nav>
+    <nav><a href="index.html#contact">Board &amp; advisory enquiries</a><a href="https://www.linkedin.com/in/edwina-sharrock/" target="_blank" rel="noopener">LinkedIn</a><a href="index.html#general-contact">Contact</a></nav>
   </div>
   <div class="wrap"><small>&copy; 2026 Edwina Sharrock OAM</small></div>
 </footer>

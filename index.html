@@ -10,7 +10,8 @@
 <header class="nav">
   <div class="wrap">
     <a class="mark" href="index.html"><b>Edwina Sharrock<span>.</span></b><i><em></em><s>OAM</s></i></a>
-    <nav class="navlinks">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="navlinks" id="nav-links">
       <a href="work-with-me.html">Work with me</a>
       <a href="#about">About</a>
       <a href="#proof">Clients</a>
@@ -19,6 +20,25 @@
     </nav>
   </div>
 </header>
+<script>
+(function(){
+  var toggle = document.getElementById("nav-toggle");
+  var links = document.getElementById("nav-links");
+  if (!toggle || !links) return;
+  toggle.addEventListener("click", function(){
+    var open = links.classList.toggle("open");
+    toggle.classList.toggle("open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  links.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(){
+      links.classList.remove("open");
+      toggle.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    });
+  });
+})();
+</script>
 <main>
 
 <section class="hero">
@@ -113,7 +133,7 @@
             <h3>Ongoing Monthly Coaching</h3>
             <p>For leaders ready to build the whole thing properly. We work it together, fortnight after fortnight: the offer and the pricing, the team, the numbers, and how you lead while it all grows.</p>
             <p>This is strategy from someone who founded a company, scaled it and sold it, applied directly to yours.</p>
-            <div class="cta-row" style="margin-top:26px"><a class="btn btn-primary" href="https://calendly.com/edwinasharrock/coaching-with-edwina-discovery-call" target="_blank" rel="noopener">Apply for coaching</a></div>
+            <div class="cta-row" style="margin-top:26px"><a class="btn btn-primary" href="#apply">Apply for coaching</a></div>
           </div>
           <div class="offer-side offer-reveal">
             <button type="button" class="btn btn-secondary btn-sm offer-reveal-btn">See pricing &amp; details</button>
@@ -242,6 +262,70 @@
   </div>
 </section>
 
+<section id="apply" class="dark">
+  <div class="wrap grid-2" style="align-items:start">
+    <div>
+      <span class="eyebrow on-dark">Ongoing Monthly Coaching</span>
+      <h2 style="margin-top:20px">Apply for coaching.</h2>
+      <p style="margin-top:20px;font-size:18px;max-width:38ch">A few details so I can see where you're at before we jump on a call. Once you hit send, I'll be in touch promptly.</p>
+    </div>
+    <div id="coaching-apply-wrap">
+      <form class="form" id="coaching-apply">
+        <div class="row">
+          <div class="field">
+            <label for="ca-name">Name</label>
+            <input id="ca-name" name="name" type="text" placeholder="Your name" required>
+          </div>
+          <div class="field">
+            <label for="ca-email">Email</label>
+            <input id="ca-email" name="email" type="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="ca-business">Business name</label>
+          <input id="ca-business" name="business" type="text" placeholder="Your business name">
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="ca-website">Website</label>
+            <input id="ca-website" name="website" type="text" placeholder="yourwebsite.com">
+          </div>
+          <div class="field">
+            <label for="ca-social">Social URLs</label>
+            <input id="ca-social" name="social" type="text" placeholder="Instagram, LinkedIn, etc">
+          </div>
+        </div>
+        <div class="field">
+          <label for="ca-goals">Main goals of working together</label>
+          <textarea id="ca-goals" name="goals" rows="3" placeholder="What you want out of this"></textarea>
+        </div>
+        <div class="field">
+          <label for="ca-challenge">Biggest current challenge</label>
+          <textarea id="ca-challenge" name="challenge" rows="3" placeholder="What's getting in the way right now"></textarea>
+        </div>
+        <button type="submit" class="btn btn-light btn-lg">Send my application</button>
+        <p class="form-note">This opens an email to Edwina with your details filled in, so you can check it before it sends.</p>
+      </form>
+      <div id="coaching-apply-done" hidden>
+        <p style="font-size:18px;color:var(--paper-0);max-width:38ch">Thanks, that's landed with me. I'll be in touch promptly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+document.getElementById('coaching-apply').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = this.name.value, email = this.email.value, business = this.business.value,
+      website = this.website.value, social = this.social.value, goals = this.goals.value, challenge = this.challenge.value;
+  var subject = 'Coaching application from ' + name;
+  var body = 'Name: ' + name + '\nEmail: ' + email + '\nBusiness: ' + business + '\nWebsite: ' + website + '\nSocial: ' + social +
+    '\n\nMain goals of working together:\n' + goals + '\n\nBiggest current challenge:\n' + challenge;
+  window.location.href = 'mailto:edwinasharrock@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  document.getElementById('coaching-apply').hidden = true;
+  document.getElementById('coaching-apply-done').hidden = false;
+});
+</script>
+
 <section id="contact" class="dark">
   <div class="wrap">
     <div>
@@ -249,6 +333,37 @@
       <h2 style="margin-top:20px">Book a discovery call.</h2>
       <p style="margin-top:20px;font-size:18px;max-width:38ch">Twenty minutes, no pitch. Tell me where you're up to and I'll tell you honestly whether I'm the right person to help.</p>
       <div class="cta-row" style="margin-top:32px"><a class="btn btn-light btn-lg" href="https://calendly.com/edwinasharrock/coaching-with-edwina-discovery-call" target="_blank" rel="noopener">Book a discovery call</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="general-contact" class="dark">
+  <div class="wrap grid-2" style="align-items:start">
+    <div>
+      <span class="eyebrow on-dark">Get in touch</span>
+      <h2 style="margin-top:20px">Have a general question?</h2>
+      <p style="margin-top:20px;font-size:18px;max-width:38ch">Send a quick message and I'll get back to you.</p>
+    </div>
+    <div id="general-contact-wrap">
+      <form class="form" id="general-contact-form">
+        <div class="field">
+          <label for="gc-name">Name</label>
+          <input id="gc-name" name="name" type="text" placeholder="Your name" required>
+        </div>
+        <div class="field">
+          <label for="gc-email">Email</label>
+          <input id="gc-email" name="email" type="email" placeholder="you@example.com" required>
+        </div>
+        <div class="field">
+          <label for="gc-message">Message</label>
+          <textarea id="gc-message" name="message" rows="4" placeholder="What's on your mind" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Send message</button>
+        <p class="form-note">This opens an email to Edwina with your details filled in, so you can check it before it sends.</p>
+      </form>
+      <div id="general-contact-done" hidden>
+        <p style="font-size:18px;color:var(--paper-0);max-width:38ch">Thanks, that's landed with me. I'll be in touch soon.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -261,6 +376,15 @@ document.addEventListener('click', function(e){
   details.hidden = false;
   btn.remove();
 });
+document.getElementById('general-contact-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = this.name.value, email = this.email.value, message = this.message.value;
+  var subject = 'Website enquiry from ' + name;
+  var body = 'Name: ' + name + '\nEmail: ' + email + '\n\n' + message;
+  window.location.href = 'mailto:edwinasharrock@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  document.getElementById('general-contact-form').hidden = true;
+  document.getElementById('general-contact-done').hidden = false;
+});
 </script>
 </main>
 
@@ -271,7 +395,7 @@ document.addEventListener('click', function(e){
       <p style="max-width:32ch;margin:0;font-size:15px;color:var(--paper-2)">Business coach to founders and leaders. Helping people who are already doing well do it with more clarity and less second-guessing.</p>
     </div>
     <nav><a href="work-with-me.html">Work with me</a><a href="#about">About</a><a href="speaking.html">Speaking</a><a href="#contact">Contact</a></nav>
-    <nav><a href="#contact">Board &amp; advisory enquiries</a><a href="https://www.linkedin.com/">LinkedIn</a><a href="mailto:edwinasharrock@gmail.com">edwinasharrock@gmail.com</a></nav>
+    <nav><a href="#contact">Board &amp; advisory enquiries</a><a href="https://www.linkedin.com/in/edwina-sharrock/" target="_blank" rel="noopener">LinkedIn</a><a href="#general-contact">Contact</a></nav>
   </div>
   <div class="wrap"><small>&copy; 2026 Edwina Sharrock OAM</small></div>
 </footer>
